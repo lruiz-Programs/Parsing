@@ -12,7 +12,7 @@ def print_grid_from_google_doc(url):
         raise ValueError(f"No table found at URL: {url}")
 
     entries = []
-    for row in table.find_all('tr')[1:]:  # skip header
+    for row in table.find_all('tr')[1:]:  # skipping header
         cells = row.find_all(['td', 'th'])
         if len(cells) < 3:
             continue
@@ -27,7 +27,7 @@ def print_grid_from_google_doc(url):
         entries.append((x, y, char))
 
     if not entries:
-        print("No valid data entries found in the table.")
+        print("No valid data entries found.")
         return
 
     max_x = max(x for x, _y, _c in entries)
